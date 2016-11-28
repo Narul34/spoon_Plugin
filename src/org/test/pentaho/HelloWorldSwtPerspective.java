@@ -51,7 +51,7 @@ public class HelloWorldSwtPerspective implements SpoonPerspective {
 	public List<XulOverlay> getOverlays() {
 		return Collections
 				.singletonList((XulOverlay) new DefaultXulOverlay(
-						"org/test/pentaho/xul/overlay.xul"));
+						"org/test/pentaho/xul/perspective.xul"));
 	}
 
 	public List<XulEventHandler> getEventHandlers() {
@@ -72,7 +72,7 @@ public class HelloWorldSwtPerspective implements SpoonPerspective {
 	public InputStream getPerspectiveIcon() {
 		ClassLoader loader = getClass().getClassLoader();
 		return loader
-				.getResourceAsStream("org/test/pentaho/star.png");
+				.getResourceAsStream("");
 	}
 
 	/**
