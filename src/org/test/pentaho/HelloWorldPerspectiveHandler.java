@@ -1,6 +1,6 @@
 package org.test.pentaho;
 
-//import org.pentaho.ui.xul.XulDomContainer;
+
 import org.pentaho.ui.xul.impl.AbstractXulEventHandler;
 import org.test.pentaho.loggin.LoginUI;
 
@@ -15,7 +15,7 @@ public class HelloWorldPerspectiveHandler extends AbstractXulEventHandler {
 	}
 
 	public void show(){
-       LoginUI login = new LoginUI(); 
-       login.createUI();
+       LoginUI lui = new LoginUI(); 
+       lui.createUI();
     }
 }
