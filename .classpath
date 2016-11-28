@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="C:/Pentaho/design-tools/data-integration/lib/kettle-core-6.1.0.1-196.jar"/>
+	<classpathentry kind="lib" path="C:/Pentaho/design-tools/data-integration/lib/kettle-engine-6.1.0.1-196.jar"/>
+	<classpathentry kind="lib" path="C:/Pentaho/design-tools/data-integration/lib/kettle-engine-test-6.1.0.1-196.jar"/>
+	<classpathentry kind="lib" path="C:/Pentaho/design-tools/data-integration/lib/kettle-ui-swt-6.1.0.1-196.jar"/>
+	<classpathentry kind="lib" path="C:/Pentaho/design-tools/data-integration/lib/pentaho-xul-core-6.1.0.1-196.jar"/>
+	<classpathentry kind="lib" path="C:/Pentaho/design-tools/data-integration/lib/pentaho-xul-swing-6.1.0.1-196.jar"/>
+	<classpathentry kind="lib" path="C:/Pentaho/design-tools/data-integration/lib/pentaho-xul-swt-6.1.0.1-196.jar"/>
+	<classpathentry kind="lib" path="C:/Pentaho/design-tools/data-integration/libswt/win64/swt.jar"/>
+	<classpathentry kind="lib" path="C:/Pentaho/design-tools/data-integration/lib/jface-3.3.0-I20070606-0010.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
