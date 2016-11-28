@@ -6,7 +6,7 @@ import org.pentaho.di.ui.spoon.SpoonPlugin;
 import org.pentaho.di.ui.spoon.SpoonPluginCategories;
 import org.pentaho.di.ui.spoon.SpoonPluginInterface;
 import org.pentaho.ui.xul.XulDomContainer;
-import org.pentaho.ui.xul.XulException; 
+import org.pentaho.ui.xul.XulException;
 
 
 
@@ -47,4 +47,6 @@ public class HelloWorldSpoonPluginInterface implements SpoonPluginInterface {
 	 * 
 	 * }
 	 */
+	
+	
 }

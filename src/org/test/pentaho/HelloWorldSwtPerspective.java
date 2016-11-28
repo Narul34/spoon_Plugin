@@ -103,5 +103,4 @@ public class HelloWorldSwtPerspective implements SpoonPerspective {
 		return "Spoon Example";
 	}
 
-
 }

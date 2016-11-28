@@ -52,6 +52,32 @@ public class LoginUI {
 		contentPane.setContentPane(mainContainer);
 	}
 
+	public void containerInitializer() {
+		mainContainer = new JPanel();
+		mainContainer.setSize(contentPane.getWidth(), contentPane.getHeight());
+		mainContainer.setOpaque(true);
+		mainContainer.setVisible(true);
+		mainContainer.setLayout(new BoxLayout(mainContainer,
+				BoxLayout.PAGE_AXIS));
+
+		PLogin pl1 = new PLogin("Paramètres de connexion",
+				"Nom du portail web :", "Nom du serveur ou son adresse IP :");
+		PLogin pl2 = new PLogin("Profil de connexion", "Nom d'utilisateur:",
+				"Mot de passe:");
+		pl1.addBox(pl1.getFirstRowPanel(), "Port HTTP", new Dimension(50, 25));
+
+		pl1.setMaximumSize(new Dimension(xLogSize, 100));
+		pl1.setPreferredSize(new Dimension(xLogSize, 100));
+		pl2.setMaximumSize(new Dimension(xLogSize, 100));
+		pl2.setPreferredSize(new Dimension(xLogSize, 100));
+
+		mainContainer.add(topContainer);
+		mainContainer.add(pl1);
+		mainContainer.add(pl2);
+		mainContainer.add(buttonContainer);
+		mainContainer.add(bottomContainer);
+	}
+
 	public void topAndBotInit() {
 
 		topLabel = new JLabel("Connnexion au portail web");
@@ -76,39 +102,23 @@ public class LoginUI {
 		bottomContainer.setBackground(Color.ORANGE);
 		bottomContainer.setPreferredSize(new Dimension(xLogSize, 30));
 		bottomContainer.setMaximumSize(new Dimension(xLogSize, 40));
-		bottomContainer.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		bottomContainer.setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 3));
 		bottomContainer.add(cancelButton);
 
-	}
-
-	public void containerInitializer() {
-		mainContainer = new JPanel();
-		mainContainer.setSize(contentPane.getWidth(), contentPane.getHeight());
-		mainContainer.setOpaque(true);
-		mainContainer.setVisible(true);
-		mainContainer.setLayout(new BoxLayout(mainContainer, BoxLayout.PAGE_AXIS));
-
-		PLogin pl1 = new PLogin("Paramètres de connexion", "Nom du portail web :", "Nom du serveur ou son adresse IP :");
-		PLogin pl2 = new PLogin("Profil de connexion", "Nom d'utilisateur:", "Mot de passe:");
-		pl1.addBox(pl1.getFirstRowPanel(), "Port HTTP", new Dimension(50,25));
-		
-
-		pl1.setMaximumSize(new Dimension(xLogSize, 100));
-		pl1.setPreferredSize(new Dimension(xLogSize, 100));
-		pl2.setMaximumSize(new Dimension(xLogSize, 100));
-		pl2.setPreferredSize(new Dimension(xLogSize, 100));
-		
-
-		mainContainer.add(topContainer);
-		mainContainer.add(pl1);
-		mainContainer.add(pl2);
-		mainContainer.add(buttonContainer);
-		mainContainer.add(bottomContainer);
 	}
 
 	public void buttonContainerInit() {
 
 		connectButton = new JButton("Connexion");
+		connectButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				
+				
+			}
+
+		});
 		homeButton = new JButton("Home");
 
 		buttonContainer = new JPanel();
