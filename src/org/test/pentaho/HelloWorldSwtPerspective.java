@@ -92,14 +92,12 @@ public class HelloWorldSwtPerspective implements SpoonPerspective {
 	
 	@Override
 	public Composite getUI() {
-		
 		return comp;
 	}
 	
 
 	@Override
 	public String getDisplayName(Locale locale) {
-		// TODO Auto-generated method stub
 		return "Spoon Example";
 	}
 

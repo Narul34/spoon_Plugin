@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<overlay id="label-test" title="Flow Test"
+<overlay id="Plug-bi-overlay" title="Plug BI"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 	height="600"
 	width="800" xmlns:pen="http://www.pentaho.org/2008/xul">
 
 	<menubar id="spoon-menubar">
-		<menu id="myMenu" label="Plug bi">
+		<menu id="myMenu" label="Plug-BI">
 			<menupopup id="monmenu-popup">
 				<menu id="connexion" label="Connexion">
 					<menupopup id="connexion-popup">
-						<menuitem id="connecter" label="Se connecter"  command="myMenu.show()"/>
+						<menuitem id="connecter" label="Se connecter"  command="myMenu.showLogin()"/>
 						<menuitem id="synchronize" label="Synchroniser"/>
 						<menuseparator id="connexion-separator-1"/>
 						<menuitem id="fermer" label="Fermer"/>
@@ -18,30 +18,16 @@
 				 </menu>
 				 <menu id="web-screen" label="Ecran web">
 					<menupopup id="web-screen-popup">
-						<menuitem id="in-futur" label="Coming soon..."/>
+						<menuitem id="web-screen-publish" label="Publier"/>
+						<menuitem id="web-screen-publish" label="Ouvrir"/>
+						<menuseparator id="web-screen-separator-1"/>
+						<menuitem id="web-screen-publish" label="Enregistrer sous..."/>
+						<menuseparator id="web-screen-separator-2"/>
+						<menuitem id="web-screen-publish" label="Apercu"/>
 					 </menupopup>
 				 </menu>
-				 <menuseparator id="monmenu-separator-1"/>
-				 <menu id="options" label="Options">
-				 	<menupopup id="options-popup">
-				 		<menuitem id="in-futur-2" label="Coming soon..."/>
-				 	</menupopup>
-				 </menu>
+				<menuitem id="option-item" label="Option" command ="myMenu.showOption()"/>
 			</menupopup>
 		</menu>
-	</menubar>
-
-		
-
-		 <!--   <menu id="myMenu" label="Plug bi">
-			<menupopup id="myMenu-popup">
-				 <menu id="connexion" label="Connexion">
-					<menupopup id="help-popup">
-						<menuitem id="myMenu" label="my item"  command="myMenu.show()"/>
-						<menuitem id="javale" label="jsuisvilaine"/>
-					 </menupopup>
-				</menu> 
-			</menupopup>
-		 </menu>  -->
-
+	</menubar>	
 </overlay>

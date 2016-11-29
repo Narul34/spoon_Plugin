@@ -1,5 +1,302 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<overlay id="menuoverlay"
+<overlay id="Plug-BI-perspective"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<menubar id="spoon-menubar">
+		<menu id="data-sources" label="Source De Donnees">
+			<menupopup id="data-sources-popup">
+				<menu id="work-view" label="Vue Metier">
+					<menupopup id="work-view-popup">
+						<menuitem id="work-view-update" label="Mettre a jour"/>
+					</menupopup>
+				</menu>
+				<menu id="filter" label="Filtres">
+					<menupopup id="filter-popup">
+						<menuitem id="filter-value-list" label="Liste de valeurs"/>
+					</menupopup>
+				</menu>
+			</menupopup>
+		</menu>
+
+		<menu id="calc-and-sim" label="Calculs et Simulations">
+			<menupopup id="calc-and-sim-popup">
+				<menu id="calculation" label="Calcul">
+					<menupopup id="calculation-popup">
+						<menu id="calculation-numericale" label="Numerique">
+							<menupopup id="calculation-numerical-popup">
+								<menuitem id="max" label="Maximum"/>
+								<menuitem id="min" label="Minimum"/>
+								<menuitem id="sum" label="Somme"/>
+								<menuitem id="average" label="Moyenne"/>
+								<menuitem id="count" label="Comptage"/>
+								<menuseparator id="calculation-numericale-separator"/>
+								<menuitem id="other" label="Autres..."/>
+							</menupopup>
+						</menu>
+						<menuitem id="text" label="Texte"/>
+						<menuseparator id="calculation-separator"/>
+						<menuitem id="work-value" label="Valeur Metier"/>
+					</menupopup>
+				</menu>
+				<menu id="simulation" label="Simulation">
+					<menupopup id="simulation-popup">
+						<menuitem id="simulation-numerical" label="Numerique"/>
+						<menuitem id="simulation-textual" label="Texte"/>
+					</menupopup>
+				</menu>
+				<menu id="rules" label="Regles">
+					<menupopup id="rules-popup">
+						<menuitem id="rules-visual-sign" label="Indicateur visuel"/>
+						<menuitem id="rules-visual-window-alert" label="Alerte Fenetre"/>
+					</menupopup>
+				</menu>
+			</menupopup>
+		</menu>
+
+		<menu id="insertion" label="Insertion">
+			<menupopup id="insertion-popup">
+				<menu id="table" label="Tableaux">
+					<menupopup id="table-popup">
+						<menu id="table-dynamical" label="Tableau Dynamique">
+							<menupopup id="table-dynamical-popup">
+								<menuitem id="sources" label="A partir d'une source"/>
+								<menuitem id="work-view" label="A partir d'une vue metier"/>
+							</menupopup>
+						</menu>
+						<menu id="table-dynamical-with-alert" label="Tableau Dynamique avec alerte">
+							<menupopup id="table-dynamical-with-alert-popup">
+								<menuitem id="sources" label="A partir d'une source"/>
+								<menuitem id="work-view" label="A partir d'une vue metier"/>
+							</menupopup>
+						</menu>
+					</menupopup>
+				</menu>
+				<menu id="graphics" label="Graphiques">
+					<menupopup id="graphics-popup">
+						<menu id="histogram" label="Histogrammes">
+							<menupopup id="histogram-popup">
+								<menuitem id="" label="Colonnes"/>
+								<menuitem id="" label="Colonnes empilees"/>
+								<menuitem id="" label="Barres"/>
+								<menuitem id="" label="Barres empilees"/>
+							</menupopup>
+						</menu>
+						<menu id="curve-and-area" label="Courbes et aires">
+							<menupopup id="curve-and-area-popup">
+								<menuitem id="line" label="Lignes"/>
+								<menuitem id="area" label="Aires"/>
+								<menuitem id="empiled-area" label="Aires empilees"/>
+							</menupopup>
+						</menu>
+						<menu id="sector" label="Secteur">
+							<menupopup id="sector-popup">
+								<menuitem id="sector-item" label="Secteur"/>
+								<menuitem id="ring" label="Anneau"/>
+							</menupopup>
+						</menu>
+						<menu id="buble" label="Bulles et XYZ">
+							<menupopup id="buble-popup">
+								<menuitem id="cloud" label="Nuages"/>
+								<menuitem id="buble-item" label="Bulles"/>
+							</menupopup>
+						</menu>
+						<menu id="combination" label="Combinaison">
+							<menupopup id="combination-popup">
+								<menuitem id="column-area" label="Colonnes, Aires"/>
+								<menuitem id="column-area-y" label="Colonnes, Aires(Dual Y)"/>
+								<menuitem id="column-curve" label="Colonnes, Courbes"/>
+								<menuitem id="column-curve-y" label="Colonnes, Courbes(Dual Y)"/>
+								<menuitem id="empiled-column-curve-y" label="Colonnes empilees, Courbes(Dual Y)3D"/>
+								<menuitem id="curv-area" label="Courbes, Aires"/>
+								<menuitem id="curv-area-y" label="Courbes, Aires(Dual Y)"/>
+								<menuitem id="empiled-column-curv" label="Colonnes empilees, Courbes"/>
+							</menupopup>
+						</menu>
+						<menu id="other" label="Autres">
+							<menupopup id="other-popup">
+								<menuitem id="funnel" label="Entonnoir"/>
+								<menuitem id="pyramid" label="Pyramide"/>
+								<menuitem id="radar-curve" label="Courbe Radar"/>
+								<menuitem id="radar-area" label="Aire Radar"/>
+								<menuitem id="waterfall" label="Cascade"/>
+							</menupopup>
+						</menu>
+					</menupopup>
+				</menu>
+				<menu id="docs" label="Documents">
+					<menupopup id="docs-popup">
+						<menuitem id="drop-off-and-read" label="Deposer et consulter"/>
+						<menuitem id="read" label="Consulter"/>
+						<menuseparator id="docs-separator"/>
+						<menuitem id="external-docs" label="Document externe"/>
+					</menupopup>
+				</menu>
+				<menu id="other-graphics" label="Autres Graphiques">
+					<menupopup id="other-graphics-popup">
+						<menuitem id="other-graphics-item" label="Coming soon..."/>
+					</menupopup>
+				</menu>
+			</menupopup>
+		</menu>
+
+
+		<menu id="interaction" label="Interactions">
+			<menupopup id="interaction-popup">
+				<menu id="action-zone" label="Zone d'action">
+					<menupopup id="action-zone-popup">
+						<menu id="button" label="Bouton">
+							<menupopup id="button-popup">
+								<menuitem id="refresh" label="Rafraichir"/>
+								<menuitem id="synchronize" label="Synchroniser"/>
+								<menuitem id="calcul-refresh" label="Rafraichir le caclcul"/>
+								<menuseparator id="button-separator-1"/>
+								<menuitem id="show-input-zone" label="Afficher les zones de saisies"/>
+								<menuitem id="edit-cell" label=" Editer Cellules"/>
+								<menuseparator id="button-separator-2"/>
+								<menuitem id="save-input" label="Enregistrer Saisies"/>
+								<menuitem id="dimension-input" label="Saisie Dimensions"/>
+								<menuseparator id="button-separator-3"/>
+								<menuitem id="Quit" label="Quitter"/>
+							</menupopup>
+						</menu>
+						<menu id="checkbox" label="Cases a cocher">
+							<menupopup id="checkbox-popup">
+								<menuitem id="standard-checkbox" label="Case a cocher standard"/>
+								<menuitem id="radio-button" label="Bouton Radio"/>
+								<menuitem id="validate-checkbox" label="Case a cocher a valider"/>
+							</menupopup>
+						</menu>
+						<menu id="list" label="Liste">
+							<menupopup id="list-popup">
+								<menuitem id="list-zone" label="Zone Liste"/>
+								<menuitem id="drop-down-list" label="Liste deroulante"/>
+								<menuseparator id="list-separator-1"/>
+								<menuitem id="single-selection-box" label="Cases selection unique"/>
+								<menuitem id="multiple-selection-box" label="Cases selection multiple"/>
+								<menuitem id="validation-checkbox" label="Case a cocher de validation"/>
+								<menuseparator id="checkbox-separator-2"/>
+								<menuitem id="validate-checkbox" label="Liste de navigation"/>
+							</menupopup>
+						</menu>
+						<menu id="action-zone-menu" label="Menu">
+							<menupopup id="action-zone-menu-popup">
+								<menuitem id="context-menu" label="Menu contextuel"/>
+								<menuitem id="navigation-menu" label="Menu de navigation"/>
+								<menuitem id="image-menu" label="Menu d'images"/>
+							</menupopup>
+						</menu>
+						<menuseparator id="action-zone-separator-1"/>
+						<menu id="regroup" label="Regroupement">
+							<menupopup id="regroup-popup">
+								<menuitem id="lines" label="Lignes"/>
+								<menuitem id="columns" label="Colonnes"/>
+							</menupopup>
+						</menu>
+						<menuseparator id="action-zone-separator-2"/>
+						<menuitem id="workflow" label="Workflow"/>
+					</menupopup>
+				</menu>
+				<menu id="notification" label="Notifications">
+					<menupopup id="notification-popup">
+						<menuitem id="buble-info" label="Infos Bulle"/>
+						<menuitem id="email" label="Email"/>
+					</menupopup>
+				</menu>
+				<menu id="link" label="Liens">
+					<menupopup id="link-popup">
+						<menuitem id="home" label="Accueil"/>
+						<menuseparator id="link-separator-1"/>
+						<menuitem id="calculed-link" label="Lien calcule"/>
+						<menu id="web-screen" label="Ecran web">
+							<menupopup id="web-screen-popup">
+								<menuitem id="standard-link" label="Liens standard"/>
+								<menuitem id="parameter-link" label="Liens avec parametres"/>
+							</menupopup>
+						</menu>
+						<menuseparator id="link-separator-2"/>
+						<menuitem id="external-web-page" label="Page web externe"/>
+						<menuitem id="internal-doc" label="document externe"/>
+						<menuseparator id="link-separator-3"/>
+						<menuitem id="backward" label="Retour en arriere"/>
+					</menupopup>
+				</menu>
+				<menu id="edit" label="Edition">
+					<menupopup id="edit-popup">
+						<menu id="form" label="Formulaire">
+							<menupopup id="form-popup">
+								<menuitem id="from-source" label="A partir d'une source"/>
+								<menuitem id="from-work-view" label="A partir d'une vue metier"/>
+							</menupopup>
+						</menu>
+						<menuitem id="validation" label="Validation"/>
+					</menupopup>
+				</menu>
+			</menupopup>
+		</menu>
+
+		<menu id="other" label="Autres">
+			<menupopup id="other-popup">
+				<menu id="report" label="Rapport">
+					<menupopup id="report-popup">
+						<menuitem id="excel" label="Excel"/>
+						<menuitem id="pdf" label="Pdf"/>
+					</menupopup>
+				</menu>
+				<menu id="more-functions" label="Plus de fonctions">
+					<menupopup id="more-funtctions-popup">
+						<menuitem id="" label="Auto-rafraichir"/>
+						<menuseparator id="more-funtctions-separator-1"/>
+						<menuitem id="" label="Date courante"/>
+						<menu id="simple-condition" label="Condition Simple">
+							<menupopup id="simple-condition-popup">
+								<menuitem id="simple-condition-item" label="Condition simple"/>
+								<menuitem id="by-user" label="Par utilisateur"/>
+							</menupopup>
+						</menu>
+						<menu id="account" label="Compte utilisateur">
+							<menupopup id="account-popup">
+								<menuitem id="profil-name" label="Nom d'un profil"/>
+								<menuitem id="user-login" label="Login d'un utilisateur"/>
+							</menupopup>
+						</menu>
+						<menu id="export" label="Exportation">
+							<menupopup id="export-popup">
+								<menuitem id="export-excel" label="Excel"/>
+								<menuitem id="export-powerpoint" label="Powerpoint"/>
+								<menuitem id="export-pdf" label="Pdf"/>
+							</menupopup>
+						</menu>
+						<menuitem id="" label="Effectuer un service"/>
+					</menupopup>
+				</menu>
+				<menu id="referencies" label="References">
+					<menupopup id="referencies">
+						<menuitem id="insert-reference" label="Inserer une reference"/>
+						<menuitem id="read-reference" label="Lire une reference"/>
+						<menuseparator id="referencies-separator-1"/>
+						<menuitem id="reference-box" label="Cellule de reference"/>
+						<menuitem id="convert-hyperlink" label="Convertir en lien hypertexte"/>
+						<menuitem id="synchronize-sheet" label="Feuille a synchroniser"/>
+						<menuseparator id="referencies-separator-2"/>
+						<menuitem id="insert-web-screen-reference" label="Inserer une reference d'ecran web"/>
+						<menuitem id="read-web-screen-reference" label="Lire une reference d'ecran web"/>
+					</menupopup>
+				</menu>
+			</menupopup>
+		</menu>
+		
+		<menu id="source" label="Source">
+			<menupopup id="source-popup">
+				<menu id="source-workview" label="Vue metier">
+					<menupopup id="source-workview-popup">
+						<menuitem id="create" label="Creer une vue metier"/>
+						<menuitem id="publish" label="Publier une vue metier"/>
+						<menuitem id="read" label="Consulter une vue metier"/>
+					</menupopup>
+				</menu>
+				<menuitem id="my-analysis" label="Mes analyses"/>
+			</menupopup>
+		</menu>
+	</menubar>
 </overlay>
