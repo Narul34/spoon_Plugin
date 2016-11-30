@@ -3,30 +3,36 @@ package org.test.pentaho.loggin;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GridLayout;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSeparator;
 
 public class LoginUI {
 
 	private JFrame contentPane;
 	private JPanel mainContainer;
-	private JPanel topContainer, buttonContainer, bottomContainer;
+	private JPanel topContainer, bottomContainer;
 	private JLabel topLabel;
 	private JButton cancelButton, connectButton, homeButton;
 	private int screenWidth;
 	private int screenHeight;
 	private int xPosition;
 	private int yPosition;
-	private int xLogSize = 600;
-	private int yLogSize = 350;
+	private int xLogSize = 580;
+	private int yLogSize = 308;
 	private Dimension screenDimension;
+	private Dimension homeButtonDim = new Dimension(40, 32);
+	private Dimension topBotPrefDim = new Dimension(xLogSize, 30);
+	private Dimension topBotMaxDim = new Dimension(xLogSize, 40);
+	private Dimension pLoginDim = new Dimension(xLogSize, 100);
 
 	public LoginUI() {
 
@@ -41,12 +47,13 @@ public class LoginUI {
 		contentPane = new JFrame();
 		contentPane.setTitle("Pentaho testFrame");
 		contentPane.setBounds(xPosition, yPosition, xLogSize, yLogSize);
+		contentPane.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		contentPane.setVisible(true);
 		contentPane.setResizable(false);
 		contentPane.setAlwaysOnTop(true);
 
-		topAndBotInit();
-		buttonContainerInit();
+		topInit();
+		botInit();
 		containerInitializer();
 
 		contentPane.setContentPane(mainContainer);
@@ -64,70 +71,85 @@ public class LoginUI {
 				"Nom du portail web :", "Nom du serveur ou son adresse IP :");
 		PLogin pl2 = new PLogin("Profil de connexion", "Nom d'utilisateur:",
 				"Mot de passe:");
-		pl1.addBox(pl1.getFirstRowPanel(), "Port HTTP", new Dimension(50, 25));
+		pl1.addRow(pl1.getRowForCol1(), "Port HTTP", new Dimension(50, 25));
 
-		pl1.setMaximumSize(new Dimension(xLogSize, 100));
-		pl1.setPreferredSize(new Dimension(xLogSize, 100));
-		pl2.setMaximumSize(new Dimension(xLogSize, 100));
-		pl2.setPreferredSize(new Dimension(xLogSize, 100));
+		pl1.setMaximumSize(pLoginDim);
+		pl1.setPreferredSize(pLoginDim);
+		pl2.setMaximumSize(pLoginDim);
+		pl2.setPreferredSize(pLoginDim);
 
 		mainContainer.add(topContainer);
 		mainContainer.add(pl1);
 		mainContainer.add(pl2);
-		mainContainer.add(buttonContainer);
 		mainContainer.add(bottomContainer);
 	}
 
-	public void topAndBotInit() {
+	public void topInit() {
 
 		topLabel = new JLabel("Connnexion au portail web");
 
-		cancelButton = new JButton("Annuler");
-		cancelButton.addActionListener(new ActionListener() {
+		topContainer = new JPanel(){
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 2L;
 
-			@Override
-			public void actionPerformed(ActionEvent event) {
-				System.exit(0);
-			}
-
-		});
-
-		topContainer = new JPanel();
-		topContainer.setBackground(Color.ORANGE);
-		topContainer.setPreferredSize(new Dimension(xLogSize, 30));
-		topContainer.setMaximumSize(new Dimension(xLogSize, 40));
+			public void paintComponent(Graphics g){
+			    Graphics2D g2d = (Graphics2D)g;         
+			    GradientPaint gp = new GradientPaint(30, 150, Color.WHITE, 0, 0, new Color(101,232,95), false);                
+			    g2d.setPaint(gp);
+			    g2d.fillRect(0, 0, this.getWidth(), this.getHeight());                
+			  } 
+		};
+		topContainer.setPreferredSize(topBotPrefDim);
+		topContainer.setMaximumSize(topBotMaxDim);
 		topContainer.add(topLabel);
-
-		bottomContainer = new JPanel();
-		bottomContainer.setBackground(Color.ORANGE);
-		bottomContainer.setPreferredSize(new Dimension(xLogSize, 30));
-		bottomContainer.setMaximumSize(new Dimension(xLogSize, 40));
-		bottomContainer.setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 3));
-		bottomContainer.add(cancelButton);
+	
 
 	}
 
-	public void buttonContainerInit() {
+	public void botInit() {
 
+		// TODO add Listener
+		homeButton = new JButton();
+		ImageIcon homeBtn = new ImageIcon(LoginUI.class.getResource("/res/home.png"));
+		homeButton.setIcon(homeBtn);
+		homeButton.setPreferredSize(homeButtonDim);
 		connectButton = new JButton("Connexion");
-		connectButton.addActionListener(new ActionListener() {
+		cancelButton = new JButton("Annuler");
+		
 
-			@Override
-			public void actionPerformed(ActionEvent event) {
-				
-				
-			}
+		bottomContainer = new JPanel(){
 
-		});
-		homeButton = new JButton("Home");
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+			public void paintComponent(Graphics g){
+			    Graphics2D g2d = (Graphics2D)g;         
+			    GradientPaint gp = new GradientPaint(0, 0, Color.WHITE, 30, 150, new Color(101,232,95), false);                
+			    g2d.setPaint(gp);
+			    g2d.fillRect(0, 0, this.getWidth(), this.getHeight());                
+			  } 
+			
+		};
+		bottomContainer.setPreferredSize(topBotPrefDim);
+		bottomContainer.setMaximumSize(topBotMaxDim);
+		GridLayout gl = new GridLayout(1, 5);
+		gl.setHgap(190);
+		JPanel homePanel = new JPanel();
+		homePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		homePanel.add(homeButton);
+		homePanel.setOpaque(false);
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		buttonPanel.add(connectButton);
+		buttonPanel.add(cancelButton);
+		buttonPanel.setOpaque(false);
+		bottomContainer.setLayout(gl);
+		bottomContainer.add(homePanel);
+		bottomContainer.add(buttonPanel);
 
-		buttonContainer = new JPanel();
-		buttonContainer.add(new JSeparator());
-		buttonContainer.add(connectButton);
-		buttonContainer.add(homeButton);
-		buttonContainer.add(new JSeparator());
-		buttonContainer.setMaximumSize(new Dimension(xLogSize, 50));
-		buttonContainer.setPreferredSize(new Dimension(xLogSize, 50));
 	}
 
 	public static void main(String[] args) {

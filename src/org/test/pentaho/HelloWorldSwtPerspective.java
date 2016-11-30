@@ -4,7 +4,7 @@ package org.test.pentaho;
 import java.io.InputStream;
 import java.util.Locale;
 
-import org.eclipse.swt.SWT;
+//import org.eclipse.swt.SWT;
 //import org.eclipse.swt.layout.GridData;
 //import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -30,8 +30,8 @@ public class HelloWorldSwtPerspective implements SpoonPerspective {
 	}
 
 	private void createUI() {
-		comp = new Composite(((Spoon) SpoonFactory.getInstance()).getShell(),
-				SWT.BORDER);/*
+		comp = new Composite(((Spoon) SpoonFactory.getInstance()).getShell(),50);
+				/*SWT.BORDER);
 		comp.setLayout(new GridLayout());
 		//comp.setLayoutData(new GridData(GridData.CENTER));
 	 	Label lbl = new Label(comp, SWT.CENTER);

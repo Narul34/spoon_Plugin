@@ -6,27 +6,21 @@
 	width="800" xmlns:pen="http://www.pentaho.org/2008/xul">
 
 	<menubar id="spoon-menubar">
-		<menu id="myMenu" label="Plug-BI">
-			<menupopup id="monmenu-popup">
-				<menu id="connexion" label="Connexion">
-					<menupopup id="connexion-popup">
-						<menuitem id="connecter" label="Se connecter"  command="myMenu.showLogin()"/>
-						<menuitem id="synchronize" label="Synchroniser"/>
-						<menuseparator id="connexion-separator-1"/>
-						<menuitem id="fermer" label="Fermer"/>
-					 </menupopup>
-				 </menu>
-				 <menu id="web-screen" label="Ecran web">
-					<menupopup id="web-screen-popup">
-						<menuitem id="web-screen-publish" label="Publier"/>
-						<menuitem id="web-screen-publish" label="Ouvrir"/>
-						<menuseparator id="web-screen-separator-1"/>
-						<menuitem id="web-screen-publish" label="Enregistrer sous..."/>
-						<menuseparator id="web-screen-separator-2"/>
-						<menuitem id="web-screen-publish" label="Apercu"/>
-					 </menupopup>
-				 </menu>
-				<menuitem id="option-item" label="Option" command ="myMenu.showOption()"/>
+		<menu id="myMenu" label="PlugBI">
+			<menupopup id="myMenu-popup">
+				<menuitem id="connect" label="Se connecter"  command="myMenu.showLogin()"/>
+				<menuseparator id="myMenu-separator-1"/>
+				<menuitem id="open-item" label="Ouvrir..."/>
+				<menuitem id="save-as-item" label="Enregistrer sous..."/>
+				<menuseparator id="myMenu-separator-2"/>
+				<menu id="publish" label="Publier">
+					<menupopup id="publish-popup">
+						<menuitem id="publish-transformation" label="Transformation"/>
+						<menuitem id="publish-job" label="Job"/>
+					</menupopup>
+				</menu>
+				<menuseparator id="myMenu-separator-3"/>
+				<menuitem id="close-item" label="Fermer" command ="myMenu.showOption()"/>
 			</menupopup>
 		</menu>
 	</menubar>	

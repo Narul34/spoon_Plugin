@@ -235,8 +235,8 @@
 			</menupopup>
 		</menu>
 
-		<menu id="other" label="Autres">
-			<menupopup id="other-popup">
+		<menu id="my-other" label="Autres">
+			<menupopup id="my-other-popup">
 				<menu id="report" label="Rapport">
 					<menupopup id="report-popup">
 						<menuitem id="excel" label="Excel"/>
@@ -244,9 +244,9 @@
 					</menupopup>
 				</menu>
 				<menu id="more-functions" label="Plus de fonctions">
-					<menupopup id="more-funtctions-popup">
+					<menupopup id="more-functions-popup">
 						<menuitem id="" label="Auto-rafraichir"/>
-						<menuseparator id="more-funtctions-separator-1"/>
+						<menuseparator id="more-functions-separator-1"/>
 						<menuitem id="" label="Date courante"/>
 						<menu id="simple-condition" label="Condition Simple">
 							<menupopup id="simple-condition-popup">
@@ -254,12 +254,14 @@
 								<menuitem id="by-user" label="Par utilisateur"/>
 							</menupopup>
 						</menu>
+						<menuseparator id="more-functions-separator-2"/>
 						<menu id="account" label="Compte utilisateur">
 							<menupopup id="account-popup">
 								<menuitem id="profil-name" label="Nom d'un profil"/>
 								<menuitem id="user-login" label="Login d'un utilisateur"/>
 							</menupopup>
 						</menu>
+						<menuseparator id="more-functions-separator-3"/>
 						<menu id="export" label="Exportation">
 							<menupopup id="export-popup">
 								<menuitem id="export-excel" label="Excel"/>
@@ -267,6 +269,7 @@
 								<menuitem id="export-pdf" label="Pdf"/>
 							</menupopup>
 						</menu>
+						<menuseparator id="more-functions-separator-4"/>
 						<menuitem id="" label="Effectuer un service"/>
 					</menupopup>
 				</menu>

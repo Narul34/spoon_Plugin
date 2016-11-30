@@ -23,8 +23,8 @@ public class OptionUI {
 	private int screenHeight;
 	private int xPosition;
 	private int yPosition;
-	private int xLogSize = 600;
-	private int yLogSize = 350;
+	private int xOptionSize = 600;
+	private int yOptionSize = 350;
 	private Dimension screenDimension;
 
 	public OptionUI() {
@@ -32,14 +32,14 @@ public class OptionUI {
 		screenDimension = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 		screenHeight = (int) screenDimension.getHeight();
 		screenWidth = (int) screenDimension.getWidth();
-		xPosition = screenWidth / 2 - xLogSize / 2;
-		yPosition = screenHeight / 2 - yLogSize / 2;
+		xPosition = screenWidth / 2 - xOptionSize / 2;
+		yPosition = screenHeight / 2 - yOptionSize / 2;
 	}
 
 	public void createUI() {
 		contentPane = new JFrame();
 		contentPane.setTitle("Pentaho testFrame");
-		contentPane.setBounds(xPosition, yPosition, xLogSize, yLogSize);
+		contentPane.setBounds(xPosition, yPosition, xOptionSize, yOptionSize);
 		contentPane.setVisible(true);
 		contentPane.setResizable(false);
 		contentPane.setAlwaysOnTop(true);
@@ -78,14 +78,14 @@ public class OptionUI {
 
 		topContainer = new JPanel();
 		topContainer.setBackground(Color.ORANGE);
-		topContainer.setPreferredSize(new Dimension(xLogSize, 30));
-		topContainer.setMaximumSize(new Dimension(xLogSize, 40));
+		topContainer.setPreferredSize(new Dimension(xOptionSize, 30));
+		topContainer.setMaximumSize(new Dimension(xOptionSize, 40));
 		topContainer.add(topLabel);
 
 		bottomContainer = new JPanel();
 		bottomContainer.setBackground(Color.ORANGE);
-		bottomContainer.setPreferredSize(new Dimension(xLogSize, 30));
-		bottomContainer.setMaximumSize(new Dimension(xLogSize, 40));
+		bottomContainer.setPreferredSize(new Dimension(xOptionSize, 30));
+		bottomContainer.setMaximumSize(new Dimension(xOptionSize, 40));
 		bottomContainer.setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 3));
 		bottomContainer.add(cancelButton);
 
