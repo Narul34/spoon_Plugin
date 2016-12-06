@@ -20,7 +20,7 @@
 					</menupopup>
 				</menu>
 				<menuseparator id="myMenu-separator-3"/>
-				<menuitem id="close-item" label="Fermer" command ="myMenu.showOption()"/>
+				<menuitem id="close-item" label="Fermer" command ="myMenu.showLoginAlert()"/>
 			</menupopup>
 		</menu>
 	</menubar>	

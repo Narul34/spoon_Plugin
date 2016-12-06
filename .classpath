@@ -11,5 +11,8 @@
 	<classpathentry kind="lib" path="C:/Pentaho/design-tools/data-integration/lib/pentaho-xul-swt-6.1.0.1-196.jar"/>
 	<classpathentry kind="lib" path="C:/Pentaho/design-tools/data-integration/libswt/win64/swt.jar"/>
 	<classpathentry kind="lib" path="C:/Pentaho/design-tools/data-integration/lib/jface-3.3.0-I20070606-0010.jar"/>
+	<classpathentry kind="lib" path="D:/adrien_projet/httpcomponents-client-4.5.2-bin/httpcomponents-client-4.5.2/lib/httpclient-4.5.2.jar"/>
+	<classpathentry kind="lib" path="D:/adrien_projet/httpcomponents-client-4.5.2-bin/httpcomponents-client-4.5.2/lib/httpcore-4.4.4.jar"/>
+	<classpathentry kind="lib" path="D:/adrien_projet/httpcomponents-client-4.5.2-bin/httpcomponents-client-4.5.2/lib/commons-logging-1.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

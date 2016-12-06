@@ -19,13 +19,14 @@ public class PLogin extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	private JPanel titlePanel, columnContainer, firstColumn, secondColumn, rowForCol1, rowForCol2;
+	private JTextField textField1, textField2;
 	
-	public PLogin(String name, String boxName1, String boxName2){
+	public PLogin(String name, String boxName1, String boxName2, JTextField jtf){
 		super();
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		
 		titlePanelInit(name);
-		colGeneration(boxName1, boxName2);
+		colGeneration(boxName1, boxName2, jtf);
 		
 		this.add(titlePanel);
 		this.add(new JSeparator());
@@ -43,7 +44,7 @@ public class PLogin extends JPanel {
 
 	}
 	
-	public void colGeneration(String boxName1, String boxName2){
+	public void colGeneration(String boxName1, String boxName2, JTextField jtf){
 		columnContainer = new JPanel();
 		columnContainer.setLayout(new BoxLayout(columnContainer, BoxLayout.LINE_AXIS));
 		
@@ -59,8 +60,8 @@ public class PLogin extends JPanel {
 		
 		JLabel nom1 = new JLabel(boxName1);
 		JLabel nom2 = new JLabel(boxName2);
-		JTextField textField1 = new JTextField(" ");
-		JTextField textField2 = new JTextField(" ");
+		textField1 = new JTextField("");
+		textField2 = jtf;
 		
 		firstColumn.add(nom1);
 		firstColumn.add(Box.createRigidArea(new Dimension(0,20)));
@@ -79,16 +80,29 @@ public class PLogin extends JPanel {
 				
 	}
 
-	public void addRow(JPanel jp, String name, Dimension dimension) {
+	
+
+	public JTextField addRow(JPanel jp, String name, Dimension dimension) {
 		JLabel rowLabel = new JLabel(name);
-		JTextField rowTextField = new JTextField(" ");
+		JTextField rowTextField = new JTextField("");
+		rowTextField.setPreferredSize(dimension);
+		rowTextField.setMaximumSize(dimension);
 		
 		jp.add(Box.createRigidArea(new Dimension(20,0)));
 		jp.add(rowLabel);
 		jp.add(Box.createRigidArea(new Dimension(10,0)));
 		jp.add(rowTextField);
+		return rowTextField;
 	}
 
+	public String getTextField1() {
+		return textField1.getText();
+	}
+
+	public String getTextField2() {
+		return textField2.getText();
+	}
+	
 	public JPanel getRowForCol1() {
 		return rowForCol1;
 	}

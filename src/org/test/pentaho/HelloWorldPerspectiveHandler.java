@@ -5,11 +5,15 @@ import org.pentaho.ui.xul.components.XulButton;
 import org.pentaho.ui.xul.containers.XulVbox;
 import org.pentaho.ui.xul.impl.AbstractXulEventHandler;
 import org.test.pentaho.loggin.LoginUI;
+import org.test.pentaho.loggin.Unlogin;
 import org.test.pentaho.option.OptionUI;
 
 public class HelloWorldPerspectiveHandler extends AbstractXulEventHandler {
 
+	private LoginUI lui;
+	
 	public HelloWorldPerspectiveHandler() {
+
 	}
 
 	public String getName() {
@@ -18,13 +22,17 @@ public class HelloWorldPerspectiveHandler extends AbstractXulEventHandler {
 	}
 
 	public void showLogin() {
-		LoginUI lui = new LoginUI();
+		lui = new LoginUI();
 		lui.createUI();
 	}
-	
-	public void showOption(){
+
+	public void showOption() {
 		OptionUI oui = new OptionUI();
 		oui.createUI();
+	}
+
+	public void showLoginAlert() {
+		new Unlogin();
 	}
 
 	public void nothin() {
