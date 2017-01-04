@@ -11,6 +11,8 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.test.pentaho.http.TestConnection;
+
 public class Unlogin extends JDialog {
 
 	/**
@@ -23,49 +25,54 @@ public class Unlogin extends JDialog {
 
 		ImageIcon img = new ImageIcon(LoginUI.class.getResource("/res/plugbiicon.png"));
 		
-		JPanel container = new JPanel();
-		container.setLayout(new BoxLayout(container, BoxLayout.PAGE_AXIS));
-		JPanel text = new JPanel();
-		JPanel buttons = new JPanel();
-		buttons.setLayout(new FlowLayout(FlowLayout.CENTER));
 		JLabel label = new JLabel("Voulez-vous vraiment vous déconnecter?");
+		
+		JPanel text = new JPanel();
+		text.add(label);
+		
 		JButton yes = new JButton("Yes");
-		JButton no = new JButton("No");
-
 		yes.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("yes");
+				TestConnection.getInstance().Logout();
+				dispose();
+				//Here we'll set the disconnect state
 			}
 		});
-
+		
+		JButton no = new JButton("No");
 		no.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("no");
+				dispose();
 
 			}
 		});
 		
+		JPanel buttons = new JPanel();
+		buttons.setLayout(new FlowLayout(FlowLayout.CENTER));
 		buttons.add(yes);
 		buttons.add(no);
-		text.add(label);
+		
+		JPanel container = new JPanel();
+		container.setLayout(new BoxLayout(container, BoxLayout.PAGE_AXIS));
 		container.add(text);
 		container.add(buttons);
 		
 		this.setIconImage(img.getImage());
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		this.setLocationRelativeTo(null);
 		this.setVisible(true);
+		this.setResizable(false);
 		this.setAlwaysOnTop(true);
 		this.setModal(true);
 		this.setContentPane(container);
 		this.pack();
 		this.validate();
-		this.setResizable(false);
-		this.setLocationRelativeTo(null);
-
 	}
 	
 	public static void main(String[] args) {

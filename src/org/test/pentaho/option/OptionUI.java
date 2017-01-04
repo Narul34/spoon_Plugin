@@ -12,6 +12,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+
+//Not in service for now, keep in for a potential used later.
+
 public class OptionUI {
 
 	private JFrame contentPane;

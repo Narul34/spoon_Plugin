@@ -1,14 +1,17 @@
+/*
+ * An UI which  make the user to connect to the PlugBI server.
+ */
+
 package org.test.pentaho.loggin;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -18,195 +21,192 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
-import org.test.pentaho.Screen;
-import org.test.pentaho.http.Connection;
+import org.pentaho.ui.xul.dom.Document;
+import org.test.pentaho.GlobalFeature;
+import org.test.pentaho.http.TestConnection;
 
-public class LoginUI {
+public class LoginUI extends JFrame {
 
-	private JFrame contentPane;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private JPanel mainContainer;
 	private JPanel topContainer, bottomContainer;
 	private JLabel topLabel;
 	private JButton cancelButton, connectButton, homeButton;
 	private int xPosition;
 	private int yPosition;
-	private int xLogSize = 580;
-	private int yLogSize = 308;
+	private int width = 580;
+	private int height = 308;
 	private Dimension homeButtonDim = new Dimension(40, 32);
-	private Dimension topBotPrefDim = new Dimension(xLogSize, 30);
-	private Dimension topBotMaxDim = new Dimension(xLogSize, 40);
-	private Dimension pLoginDim = new Dimension(xLogSize, 100);
-
+	private Dimension topBotDim = new Dimension(width, 40);
+	private Dimension pLoginDim = new Dimension(width, 100);
 	private PLogin pl1, pl2;
 	private JTextField newJt;
+	private static Document document;
+	
 
-	/**
+	/*
 	 * A Class which contains methods to generate a frame allowing the customer
 	 * to connect to the server.
 	 */
-	public LoginUI() {
-
-		xPosition = Screen.SCREEN_WIDTH / 2 - xLogSize / 2;
-		yPosition = Screen.SCREEN_HEIGHT / 2 - yLogSize / 2;
+	public LoginUI(Document document) {
+		super();
+		LoginUI.document = document;
+		xPosition = GlobalFeature.SCREEN_WIDTH / 2 - width / 2;
+		yPosition = GlobalFeature.SCREEN_HEIGHT / 2 - height / 2;
+		createUI();
 	}
 
-	/**
+	/*
 	 * this methods create and show the login frame
 	 */
 	public void createUI() {
-		contentPane = new JFrame();
-		contentPane.setTitle("Pentaho testFrame");
-		ImageIcon img = new ImageIcon(
-				LoginUI.class.getResource("/res/plugbiicon.png"));
-		contentPane.setIconImage(img.getImage());
-		contentPane.setBounds(xPosition, yPosition, xLogSize, yLogSize);
-		contentPane.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		contentPane.setVisible(true);
-		contentPane.setResizable(false);
-		contentPane.setAlwaysOnTop(true);
-
-		topInit();
-		botInit();
-		containerInitializer();
-
-		contentPane.setContentPane(mainContainer);
+		
+			ImageIcon img = new ImageIcon(LoginUI.class.getResource("/res/plugbiicon.png"));
+			
+			this.setTitle("Pentaho testFrame");		
+			this.setIconImage(img.getImage());
+			this.setBounds(xPosition, yPosition, width, height);
+			this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			this.setVisible(true);
+			this.setResizable(false);
+			//this.setAlwaysOnTop(true);
+			topInit();
+			botInit();
+			containerInitializer();
+			this.setContentPane(mainContainer);		
 	}
 
-	/**
+	/*
 	 * this method generate the big part of the frame
 	 */
 	public void containerInitializer() {
-		mainContainer = new JPanel();
-		mainContainer.setSize(contentPane.getWidth(), contentPane.getHeight());
-		mainContainer.setOpaque(true);
-		mainContainer.setVisible(true);
-		mainContainer.setLayout(new BoxLayout(mainContainer,
-				BoxLayout.PAGE_AXIS));
-
+		
 		pl1 = new PLogin("Paramètres de connexion", "Nom du portail web :",
 				"Nom du serveur ou son adresse IP :", new JTextField());
 		pl2 = new PLogin("Profil de connexion", "Nom d'utilisateur:",
 				"Mot de passe:", new JPasswordField());
-		newJt = pl1.addRow(pl1.getRowForCol1(), "Port HTTP", new Dimension(50,
-				30));
+		newJt = pl1.addRow(pl1.getRowForCol1(), "Port HTTP", new Dimension(50,30));
 
 		pl1.setMaximumSize(pLoginDim);
 		pl1.setPreferredSize(pLoginDim);
+		pl1.setBorder(new EmptyBorder(0, 3, 0, 0));
 		pl2.setMaximumSize(pLoginDim);
 		pl2.setPreferredSize(pLoginDim);
-
+		
+		mainContainer = new JPanel();
+		mainContainer.setSize(this.getWidth(), this.getHeight());
+		mainContainer.setOpaque(true);
+		mainContainer.setVisible(true);
+		mainContainer.setLayout(new BoxLayout(mainContainer, BoxLayout.PAGE_AXIS));
 		mainContainer.add(topContainer);
 		mainContainer.add(pl1);
 		mainContainer.add(pl2);
 		mainContainer.add(bottomContainer);
 	}
 
-	/**
+	/*
 	 * this method generate the top part of the frame
 	 */
 	public void topInit() {
 
 		topLabel = new JLabel("Connnexion au portail web");
 
-		topContainer = new JPanel() {
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 2L;
-
-			public void paintComponent(Graphics g) {
-				Graphics2D g2d = (Graphics2D) g;
-				GradientPaint gp = new GradientPaint(30, 150, Color.WHITE, 0,
-						0, new Color(101, 232, 95), false);
-				g2d.setPaint(gp);
-				g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
-			}
-		};
-		topContainer.setPreferredSize(topBotPrefDim);
-		topContainer.setMaximumSize(topBotMaxDim);
+		topContainer = new ColoredPanel(30, 150, Color.WHITE, 0, 0, new Color(101, 232, 95));			
+		topContainer.setPreferredSize(topBotDim);
+		topContainer.setMaximumSize(topBotDim);
 		topContainer.add(topLabel);
 
 	}
 
-	/**
+	/*
 	 * this method generate the bottom of the frame
 	 */
 	public void botInit() {
 
-		// TODO add Listener
-		homeButton = new JButton();
-		ImageIcon homeBtn = new ImageIcon(
-				LoginUI.class.getResource("/res/home.png"));
+		ImageIcon homeBtn = new ImageIcon(LoginUI.class.getResource("/res/home.png"));
+		homeButton = new JButton();		
 		homeButton.setIcon(homeBtn);
 		homeButton.setPreferredSize(homeButtonDim);
+		
 		connectButton = new JButton("Connexion");
 		cancelButton = new JButton("Annuler");
-
 		setButtonListener();
+
+		GridLayout gridLayout = new GridLayout(1, 5);
+		gridLayout.setHgap(190);
 		
-		bottomContainer = new JPanel() {
-
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-
-			public void paintComponent(Graphics g) {
-				Graphics2D g2d = (Graphics2D) g;
-				GradientPaint gp = new GradientPaint(0, 0, Color.WHITE, 30,
-						150, new Color(101, 232, 95), false);
-				g2d.setPaint(gp);
-				g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
-			}
-
-		};
-		bottomContainer.setPreferredSize(topBotPrefDim);
-		bottomContainer.setMaximumSize(topBotMaxDim);
-		GridLayout gl = new GridLayout(1, 5);
-		gl.setHgap(190);
 		JPanel homePanel = new JPanel();
 		homePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		homePanel.add(homeButton);
 		homePanel.setOpaque(false);
+		
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		buttonPanel.add(connectButton);
 		buttonPanel.add(cancelButton);
 		buttonPanel.setOpaque(false);
-		bottomContainer.setLayout(gl);
+		
+		bottomContainer = new ColoredPanel(0, 0, Color.WHITE, 30, 150, new Color(101, 232, 95));
+		bottomContainer.setPreferredSize(topBotDim);
+		bottomContainer.setMaximumSize(topBotDim);
+		bottomContainer.setLayout(gridLayout);
 		bottomContainer.add(homePanel);
 		bottomContainer.add(buttonPanel);
 
 	}
 
 	public void setButtonListener() {
+		
+		
+		
 
-		ActionListener al = new ActionListener(){
+		connectButton.addActionListener(new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Connection(pl1.getTextField1(), newJt.getText(), pl1.getTextField2(),
-						pl2.getTextField1(), pl2.getTextField2());
 				
+				String portal = pl1.getTextField1() ;
+				String port = newJt.getText() ;
+				String host = pl1.getTextField2();
+				String user = pl2.getTextField1() ;
+				String password = pl2.getTextField2() ;
+				
+				try {
+					TestConnection.getInstance().Load(portal, port, host, user, password);
+					if(TestConnection.getInstance().Login()){
+						LoginUI.document.getElementById("open-item").setAttribute("disabled", "false");
+					}
+					
+					
+				} catch (IOException | URISyntaxException e1) {
+					e1.printStackTrace();
+				}
+
 			}
-			
-		};
-		
-		connectButton.addActionListener(al);
+
+		});
 
 		cancelButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				contentPane.dispose();
+				dispose();
 			}
 		});
 
 	}
 
 	public static void main(String[] args) {
-		LoginUI lui = new LoginUI();
-		lui.createUI();
+		//BasicConfigurator.configure();
+		
+		LoginUI lui = new LoginUI(document);
+		System.out.println(lui);
 	}
 
 }

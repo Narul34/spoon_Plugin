@@ -10,18 +10,19 @@
 			<menupopup id="myMenu-popup">
 				<menuitem id="connect" label="Se connecter"  command="myMenu.showLogin()"/>
 				<menuseparator id="myMenu-separator-1"/>
-				<menuitem id="open-item" label="Ouvrir..."/>
-				<menuitem id="save-as-item" label="Enregistrer sous..."/>
+				<menuitem id="open-item" label="Ouvrir..." disabled="true"/>
+				<menuitem id="save-as-item" label="Enregistrer sous..." disabled="true" />
 				<menuseparator id="myMenu-separator-2"/>
-				<menu id="publish" label="Publier">
+				<menu id="publish" label="Publier" >
 					<menupopup id="publish-popup">
-						<menuitem id="publish-transformation" label="Transformation"/>
-						<menuitem id="publish-job" label="Job"/>
+						<menuitem id="publish-transformation" label="Transformation" disabled="true"/>
+						<menuitem id="publish-job" label="Job" disabled="true"/>
 					</menupopup>
 				</menu>
 				<menuseparator id="myMenu-separator-3"/>
 				<menuitem id="close-item" label="Fermer" command ="myMenu.showLoginAlert()"/>
 			</menupopup>
 		</menu>
+		<menu id="file" label="pouet"/>
 	</menubar>	
 </overlay>
