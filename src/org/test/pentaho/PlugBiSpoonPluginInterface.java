@@ -5,7 +5,6 @@
 
 package org.test.pentaho;
 
-//import org.eclipse.jface.window.ApplicationWindow;
 import org.pentaho.di.ui.spoon.SpoonLifecycleListener;
 import org.pentaho.di.ui.spoon.SpoonPerspective;
 import org.pentaho.di.ui.spoon.SpoonPlugin;
@@ -13,9 +12,15 @@ import org.pentaho.di.ui.spoon.SpoonPluginCategories;
 import org.pentaho.di.ui.spoon.SpoonPluginInterface;
 import org.pentaho.ui.xul.XulDomContainer;
 import org.pentaho.ui.xul.XulException;
-//import org.pentaho.ui.xul.XulLoader;
-//import org.pentaho.ui.xul.XulOverlay;
-//import org.pentaho.ui.xul.jface.tags.ApplicationWindowLocal;
+
+/**
+ * Configure the plug-in and indicate the XUL file with which is related, and add an handler.
+ * 
+ * @author Adrien Blanes
+ * @since 01/2017
+ * @version 0.5
+ *
+ */
 
 @SpoonPlugin(id = "myPlugIn", image = "")
 @SpoonPluginCategories({ "spoon" })
@@ -25,6 +30,11 @@ public class PlugBiSpoonPluginInterface implements SpoonPluginInterface {
 
 	}
 
+	/**
+	 * This method is called while the Spoon.bat is loading, and integrate the plug-in to the interface.
+	 * @param category Should be supposed equals to "spoon" : when loading, Spoon is seek where to apply plug-ins;
+	 *  To apply where you want, you have to pout "spoon" as the condition parameter (see http://wiki.pentaho.com/display/EAI/PDI+Spoon+Plugin+Development)
+	 */
 	@Override
 	public void applyToContainer(String category, XulDomContainer container)
 			throws XulException {
@@ -32,24 +42,20 @@ public class PlugBiSpoonPluginInterface implements SpoonPluginInterface {
 			container.registerClassLoader(getClass().getClassLoader());
 			container.loadOverlay("org/test/pentaho/xul/overlay.xul");
 			container.addEventHandler(new PlugBiPerspectiveHandler());
-			/*
-			 * XulLoader lala = container.getXulLoader();
-			 * System.out.print("prout prout lalalal c'est la" + container.getDocumentRoot() + " pouet pouet" /*+ container.getDocumentRoot().getChildNodes().get(0).getElementById("myMenu").getAttributeValue("disabled")*//*);
-			 * container.getDocumentRoot().getChildNodes().get(0).getElementById("myMenu").setAttribute("disabled",  "true");
-			container.getDocumentRoot().getChildNodes().get(0).getElementById("tools").getElementById("capability-manager").setAttribute("disabled",  "true");
-			System.out.print( container.getDocumentRoot().getElementById("spoon-menubar").getElementById("file") == null ? container.getDocumentRoot().getElementById("spoon-menubar").getElementById("file").getId() : "Is null MF"); 
-			container.getDocumentRoot().getElementById("spoon-menubar").removeChild(container.getDocumentRoot().getElementById("spoon-menubar").getElementById("file"));
-			 */
-			
-			
 		}
 	}
 
+	/**
+	 * This method can prepare actions during life cycle of Spoon (at start, at end...)
+	 */
 	@Override
 	public SpoonLifecycleListener getLifecycleListener() {
 		return null;
 	}
 
+	/**
+	 * This feature allow to create your own perspective on Spoon (selectable on the drop down menu, upper right corner)
+	 */
 	@Override
 	public SpoonPerspective getPerspective() {
 		return PlugBiSwtPerspective.getInstance();

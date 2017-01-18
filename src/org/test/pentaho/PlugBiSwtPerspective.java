@@ -24,17 +24,37 @@ import org.pentaho.ui.xul.impl.XulEventHandler;
 import java.util.Collections;
 import java.util.List;
 
-
+/**
+ * Here you can set your own perspective for the plug-in (actually just adding no-functionnal menu to main toolbar)
+ * 
+ * @author Adrien Blanes
+ * @since 01/2017
+ * @version 0.5
+ *
+ */
 
 public class PlugBiSwtPerspective implements SpoonPerspective {
 	
+	/**
+	 * the swt container of the perspective
+	 */
 	private Composite comp;
+	
+	/**
+	 * Singleton
+	 */
 	private static PlugBiSwtPerspective instance = new PlugBiSwtPerspective();
 
+	/**
+	 * Calls creatUI() .
+	 */
 	private PlugBiSwtPerspective() {
 		createUI();
 	}
 
+	/**
+	 * this where you can configure your perspective. Use it as a normal SWT creation method.
+	 */
 	private void createUI() {
 		comp = new Composite(((Spoon) SpoonFactory.getInstance()).getShell(),50);
 				/*SWT.BORDER);
@@ -47,13 +67,21 @@ public class PlugBiSwtPerspective implements SpoonPerspective {
 				+ "Edit->\"Perspective Only Action\"");*/
 	} 
      
+	/**
+	 * 
+	 * @return the instance of the class.
+	 */
 	public static PlugBiSwtPerspective getInstance() {
 		return instance;
 	}
 
 	public void setActive(boolean b) {
+		
 	}
 
+	/**
+	 * You can set a Xul overlay file which will be activated when you select the perspective.
+	 */
 	public List<XulOverlay> getOverlays() {
 		return Collections.singletonList(
 				(XulOverlay) new DefaultXulOverlay("org/test/pentaho/xul/perspective.xul"));

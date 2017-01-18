@@ -1,29 +1,31 @@
 /*
- * This important class is using to communicate between pentaho environnment and this project.
+ * This important class is used to communicate between pentaho environnment and this project.
  */
 
 package org.test.pentaho;
 
-import org.pentaho.ui.xul.XulComponent;
-import org.pentaho.ui.xul.binding.Binding;
-import org.pentaho.ui.xul.binding.BindingFactory;
-import org.pentaho.ui.xul.binding.DefaultBinding;
-import org.pentaho.ui.xul.binding.DefaultBindingFactory;
-import org.pentaho.ui.xul.components.XulToolbarbutton;
 import org.pentaho.ui.xul.impl.AbstractXulEventHandler;
-import org.pentaho.ui.xul.swing.SwingBindingFactory;
 import org.test.pentaho.loggin.LoginUI;
-import org.test.pentaho.loggin.Unlogin;
-import org.test.pentaho.model.MenuModel;
-import org.test.pentaho.option.OptionUI;
+import org.test.pentaho.loggin.LoginOut;
 
-
+/**
+ * A class imperatively needed to create a Spoon plug-in, it communicates between Pentaho environnment and this project.
+ * 
+ * @author Adrien Blanes
+ * @since 01/2017
+ * @version 0.5
+ *
+ */
 
 public class PlugBiPerspectiveHandler extends AbstractXulEventHandler {
 	
-	private LoginUI lui = null;
-	private MenuModel mm1 = new MenuModel();
-	private Binding bind;
+	/**
+	 * This object represent the connection interface. 
+	 */
+	private static LoginUI lui = null;
+	
+	
+	//private MenuModel mm1 = new MenuModel();
 	
 
 	public PlugBiPerspectiveHandler() {
@@ -33,7 +35,7 @@ public class PlugBiPerspectiveHandler extends AbstractXulEventHandler {
 	
 	public void test(){
 		System.out.println("ici c'est le doc tavu rpzZZZ : " + document);
-		XulComponent xc =   (XulComponent) document.getElementById("myMenu").getElementById("open-item");
+		//XulComponent xc =   (XulComponent) document.getElementById("myMenu").getElementById("open-item");
 		//JfaceMenu xmb = (JfaceMenu) document.getElementById("myMenu");
 		//bind = new DefaultBinding(mm1, "okEnabled", xmb.getElementById("myMenu-popup").getElementById("open-item").getAttributeValue("disabled") , "true");
 		/*System.out.println("lalala c'est la tavu lame culo : : : :" +xc.getElementById("myMenu-popup").getElementById("open-item").getAttributeValue("disabled"));
@@ -45,7 +47,7 @@ public class PlugBiPerspectiveHandler extends AbstractXulEventHandler {
 		} catch (XulDomException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 		
 		System.out.println(xc.getAttributeValue("disabled"));
 		BindingFactory bf = new DefaultBindingFactory();
@@ -54,19 +56,26 @@ public class PlugBiPerspectiveHandler extends AbstractXulEventHandler {
         mm1.setOkEnabled(false);
         System.out.println(mm1.isOkEnabled());
 		System.out.println(xc.getAttributeValue("disabled"));
+		*/
 	}
 	
-	// this name should match event handler aliases in the overlay.xul file
 
+	/**
+	 * An important getter, should match event handler aliases in the associated xul file.
+	 */
 	@Override
 	public String getName() {
 		return "myMenu";
 	}
 	
+	
 	public void onLoad(){
 		
 	}
 
+	/**
+	 * This method is called in the xul file to display the connection UI.
+	 */
 	public void showLogin() {
 		if (lui == null){
 			lui = new LoginUI(document);
@@ -76,13 +85,12 @@ public class PlugBiPerspectiveHandler extends AbstractXulEventHandler {
 		lui = new LoginUI(document);
 	}
 
-	public void showOption() {
-		OptionUI oui = new OptionUI();
-		oui.createUI();
-	}
-
+	
+	/**
+	 * A simple UI to close connection between user and server.
+	 */
 	public void showLoginAlert() {
-		new Unlogin();
+		new LoginOut();
 	}
 
 }

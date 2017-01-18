@@ -25,7 +25,7 @@ import javax.swing.border.EmptyBorder;
 
 import org.pentaho.ui.xul.dom.Document;
 import org.test.pentaho.GlobalFeature;
-import org.test.pentaho.http.TestConnection;
+import org.test.pentaho.http.Connect;
 
 public class LoginUI extends JFrame {
 
@@ -41,11 +41,11 @@ public class LoginUI extends JFrame {
 	private int xPosition;
 	private int yPosition;
 	private int width = 580;
-	private int height = 308;
-	private Dimension homeButtonDim = new Dimension(40, 32);
-	private Dimension topBotDim = new Dimension(width, 40);
+	private int height = 318;
+	private Dimension homeButtonDim = new Dimension(40, 36);
+	private Dimension topBotDim = new Dimension(width, 45);
 	private Dimension pLoginDim = new Dimension(width, 100);
-	private PLogin pl1, pl2;
+	private LoginPanel pl1, pl2;
 	private JTextField newJt;
 	private static Document document;
 	
@@ -87,9 +87,9 @@ public class LoginUI extends JFrame {
 	 */
 	public void containerInitializer() {
 		
-		pl1 = new PLogin("Paramètres de connexion", "Nom du portail web :",
+		pl1 = new LoginPanel("Paramètres de connexion", "Nom du portail web :",
 				"Nom du serveur ou son adresse IP :", new JTextField());
-		pl2 = new PLogin("Profil de connexion", "Nom d'utilisateur:",
+		pl2 = new LoginPanel("Profil de connexion", "Nom d'utilisateur:",
 				"Mot de passe:", new JPasswordField());
 		newJt = pl1.addRow(pl1.getRowForCol1(), "Port HTTP", new Dimension(50,30));
 
@@ -117,7 +117,7 @@ public class LoginUI extends JFrame {
 
 		topLabel = new JLabel("Connnexion au portail web");
 
-		topContainer = new ColoredPanel(30, 150, Color.WHITE, 0, 0, new Color(101, 232, 95));			
+		topContainer = new ColoredPanel(0, 0, new Color(200, 200, 200), 0, 30, new Color(238, 238, 238));			
 		topContainer.setPreferredSize(topBotDim);
 		topContainer.setMaximumSize(topBotDim);
 		topContainer.add(topLabel);
@@ -132,7 +132,10 @@ public class LoginUI extends JFrame {
 		ImageIcon homeBtn = new ImageIcon(LoginUI.class.getResource("/res/home.png"));
 		homeButton = new JButton();		
 		homeButton.setIcon(homeBtn);
+		homeButton.setToolTipText("Accueil");
 		homeButton.setPreferredSize(homeButtonDim);
+		homeButton.setBorderPainted(false);
+		homeButton.setContentAreaFilled(false);
 		
 		connectButton = new JButton("Connexion");
 		cancelButton = new JButton("Annuler");
@@ -152,7 +155,7 @@ public class LoginUI extends JFrame {
 		buttonPanel.add(cancelButton);
 		buttonPanel.setOpaque(false);
 		
-		bottomContainer = new ColoredPanel(0, 0, Color.WHITE, 30, 150, new Color(101, 232, 95));
+		bottomContainer = new ColoredPanel(0, 0, new Color(238, 238, 238), 0, 30, new Color(200, 200, 200));
 		bottomContainer.setPreferredSize(topBotDim);
 		bottomContainer.setMaximumSize(topBotDim);
 		bottomContainer.setLayout(gridLayout);
@@ -163,9 +166,6 @@ public class LoginUI extends JFrame {
 
 	public void setButtonListener() {
 		
-		
-		
-
 		connectButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -178,8 +178,8 @@ public class LoginUI extends JFrame {
 				String password = pl2.getTextField2() ;
 				
 				try {
-					TestConnection.getInstance().Load(portal, port, host, user, password);
-					if(TestConnection.getInstance().Login()){
+					Connect.getInstance().Load(portal, port, host, user, password);
+					if(Connect.getInstance().Login()){
 						LoginUI.document.getElementById("open-item").setAttribute("disabled", "false");
 					}
 					
