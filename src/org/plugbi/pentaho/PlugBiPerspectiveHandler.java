@@ -40,10 +40,10 @@ public class PlugBiPerspectiveHandler extends AbstractXulEventHandler {
 	/**
 	 * A temporary method to try to manage Xul.
 	 */
-	public void managingXul(){
-		/*System.out.println("LE DOCUMENT : " + document);
-		XulComponent xc =   (XulComponent) document.getElementById("myMenu").getElementById("open-item");
-		JfaceMenu xmb = (JfaceMenu) document.getElementById("myMenu");
+	public void managingXul(){ 
+		/*System.out.println("LE DOCUMENT : " + document);*/
+		// document.getElementById("open-item").setAttribute("disabled", "false");
+		/*JfaceMenu xmb = (JfaceMenu) document.getElementById("myMenu");
 		bind = new DefaultBinding(mm1, "okEnabled", xmb.getElementById("myMenu-popup").getElementById("open-item").getAttributeValue("disabled") , "true");
 		xc.getElementById("myMenu-popup").getElementById("open-item").setAttribute("disabled", "false");
 		try {
@@ -80,8 +80,10 @@ public class PlugBiPerspectiveHandler extends AbstractXulEventHandler {
 			lui = new LoginUI(document);
 			managingXul();
 		}
-		if(!lui.isVisible())
+		if(!lui.isVisible()){
 		lui = new LoginUI(document);
+		managingXul();
+		}
 	}
 
 	
@@ -89,7 +91,7 @@ public class PlugBiPerspectiveHandler extends AbstractXulEventHandler {
 	 * A simple UI to close connection between user and server.
 	 */
 	public void showLoginAlert() {
-		new LoginOut("res/plugbiicon.png");
+		new LoginOut("/res/plugbiicon.png");
 	}
 
 }

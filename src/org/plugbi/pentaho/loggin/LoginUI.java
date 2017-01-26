@@ -86,23 +86,23 @@ public class LoginUI extends JFrame {
 	/**
 	 * The width of the frame.
 	 */
-	private final int WIDTH = 580;
+	public final int WIDTH = 580;
 	/**
 	 * The height of the frame.
 	 */
-	private final int HEIGHT = 318;
+	public final int HEIGHT = 318;
 	/**
 	 * The dimension of the home button.
 	 */
-	private final Dimension HOME_BUTTON_DIM = new Dimension(40, 36);
+	public final Dimension HOME_BUTTON_DIM = new Dimension(40, 36);
 	/**
 	 * The dimension of the top and bottom panel.
 	 */
-	private final Dimension TOP_BOT_DIM = new Dimension(WIDTH, 45);
+	public final Dimension TOP_BOT_DIM = new Dimension(WIDTH, 45);
 	/**
 	 * The dimension of a LoginPanel class.
 	 */
-	private final Dimension PLOGIN_DIM = new Dimension(WIDTH, 100);
+	public final Dimension PLOGIN_DIM = new Dimension(WIDTH, 100);
 	/**
 	 * A container for the form.
 	 */
